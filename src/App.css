@@ -11,17 +11,20 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
 
 .Image {
+  padding: 20px;
   border: 20px;
   border-color: red;
-
+  
 }
+}
+
+table { overflow-x: auto;}
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 60vh;
   display: flex;
   flex-direction: column;
   align-items: center;
