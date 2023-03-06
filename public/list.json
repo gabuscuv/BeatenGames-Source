@@ -1,10 +1,4 @@
-import logo from './logo.svg';
-import './App.css';
-import "react-widgets/styles.css";
-import { Combobox } from 'react-widgets'; 
-import React, { createElement, useState } from 'react';
-
-const fs = {
+{
   "2023": [
     {
       "name": "13 Sentinels: Aegis Rim",
@@ -514,54 +508,3 @@ const fs = {
     }
   ]
 }
-
-function getYearsAbleToList()
-{
-  return Object.keys(fs).reverse();
-}
-
-function RenderList({yearToList})
-{ 
-  if (! fs[yearToList]){return} 
-  let initialList = fs[yearToList].map(element=> <td><img className="Image" src={element["img"]}></img><p>{element["name"]}</p></td>)
-  //let f = (output.length / 3);
-  if(initialList.length == 0) {return(createElement("table", null));}
-  let output = [];
-  let woktmp = [];
-  let f = 0;
-
-  for (var i=0; i < initialList.length;i++)
-  {
-    if(f == 4)
-    {
-      output.push(createElement("tr", null, woktmp))
-      f=0
-      woktmp = [];
-    }
-    woktmp.push(initialList[i])
-    f++
-  }
-
-  if(woktmp.length != 0)
-  {
-    output.push(createElement("tr", null, woktmp))
-  }
-
-  return(createElement("table", null, createElement("tbody",null,output)))
-}
-
-function App() {
-  const [year, setYear] = useState(2023);
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Combobox name="fieldyear"  defaultValue="2023" data={getYearsAbleToList()} onChange={(year) => (setYear(year))}></Combobox>
-        <RenderList yearToList={year} />
-      </header>
-    </div>
-  );
-}
-
-export default App;
