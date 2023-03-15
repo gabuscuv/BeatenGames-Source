@@ -7,20 +7,115 @@
   pointer-events: none;
 }
 
+.Combobox{
+  padding-bottom: 1%;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 
-.Image {
-  padding: 20px;
-  border: 20px;
-  border-color: red;
-  
-}
 }
 
-table { overflow-x: auto;}
+.overlay-red
+{
+  background: rgba(161, 32, 32, 0.9); /* Black see-through */
+  display: block;
+}
+
+.overlay-steam
+{
+  width: 20%;
+  transform: scale(1);
+  background: rgb(32, 101, 161, 0.9); /* Black see-through */
+
+}
+
+.overlay-steamvr
+{
+  width: 18%;
+  background: rgb(32, 101, 161, 0.9); /* Black see-through */
+
+}
+
+.overlay-white
+{
+  width: 20%;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.9); /* Black see-through */
+
+}
+
+.overlay-oculus
+{
+  width: 20%;
+  background: rgb(32, 101, 161, 0.9); /* Black see-through */
+
+}
+
+.overlay-ps4
+{
+  width: 30%;
+  background: rgba(4, 58, 104, 0.9); /* Black see-through */
+}
+
+.overlay-ps3
+{
+  width: 20%;
+  transform: scale(1);
+  background: rgba(4, 58, 104, 0.9); /* Black see-through */
+}
+
+.overlay-switch
+{
+  width: 15%;
+}
+
+.overlay-PCXGP
+{
+  width: 15%;
+  padding: 1%;
+  background: rgba(16, 33, 12,0.8); /* Black see-through */
+}
+
+.overlay-origin
+{
+  width: 40%;
+
+}
+
+.overlay-stadia
+{
+  width: 15%;
+  transform: scale(1);
+  background: rgba(204, 49, 10, 0.9); /* Black see-through */
+}
+
+.overlay-notdefined {
+  width: 20%;
+}
+.Image {
+  
+  max-width: calc(10px + 50vmin);
+  height: auto;
+}
+
+.container {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  opacity:1;
+  max-width: 100%;
+  color: white;
+  font-size: 20px;
+/*  padding-left: 20px;
+  padding-right: 20px;*/
+  text-align: center;
+}
+/*table { overflow-x: unset;}*/
 
 .App-header {
   background-color: #282c34;
@@ -29,7 +124,7 @@ table { overflow-x: auto;}
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(9px + 3vmin);
+  font-size: calc(3px + 3vmin);
   color: white;
 }
 

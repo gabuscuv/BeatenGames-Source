@@ -29,7 +29,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <Combobox name="fieldyear"  defaultValue="2023" data={keys} onChange={(year) => (setYear(year))}></Combobox>
+        <Combobox className='Combobox' name="fieldyear"  defaultValue="2023" data={keys} onChange={(year) => (setYear(year))}></Combobox>
         <BeatenGameList yearToList={year} rows={rows} callback={initComboBox} />
       </header>
     </div>
