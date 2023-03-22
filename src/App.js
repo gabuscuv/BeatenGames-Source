@@ -7,23 +7,30 @@ import BeatenGameList from './Component/BeatenGameList';
 
 // workaround meanwhile is fetching data
 let keys = ["2023","2022","2021","2020"]
-let rows = 4
-/*
- It's not dynamic responsive but It does the work
- But It's a Hack, It should be change soon.
- */
-if (visualViewport.width <= 500) {rows = 1;} // Mobile
-if ( visualViewport.width > 500 && visualViewport.width <= 810) {rows = 2;} // Tablet-like
-
-
-function initComboBox(keyslist)
-{
-  
-  keys=(keyslist).reverse()
-}
 
 function App() {
   const [year, setYear] = useState(2023);
+  const [rows, setRows] = useState(4);
+  var timer;
+  function updateRows(){
+    if ( rows !== 1 && visualViewport.width <= 500 ) {setRows(1);return} // Mobile
+    if ( rows !== 2 && visualViewport.width > 500 && visualViewport.width <= 810) {setRows(2);return} // Tablet-like
+    if ( rows !== 3 && visualViewport.width > 810 && visualViewport.width <= 1000) {setRows(3);return} // Tablet-like
+    if ( rows !== 4 && visualViewport.width > 1000 ) {setRows(4);return} // Tablet-like
+  }
+
+  window.addEventListener('resize',function(event){
+    if (timer){clearTimeout(timer)}
+    timer = setTimeout(updateRows,500)
+  })
+
+  function initComboBox(keyslist)
+{
+  
+  keys=(keyslist).reverse()
+  setRows(4)
+
+}
 
   return (
     <div className="App">

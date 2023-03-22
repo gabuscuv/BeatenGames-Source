@@ -24,6 +24,15 @@
   display: block;
 }
 
+.overlay-egs
+{
+  margin-top: 2%;
+  margin-left: 2%;
+  width: 10%;
+  background: rgb(32, 101, 161, 0.9); /* Black see-through */
+
+}
+
 .overlay-steam
 {
   width: 20%;
@@ -54,8 +63,18 @@
 
 }
 
+.overlay-wii
+{
+  padding: 1%;
+  width: 15%;
+  background: rgba(255, 255, 255, 0.9); /* Black see-through */
+}
+
 .overlay-ps4
 {
+  padding-top: 1%;
+  padding-bottom: 1%;
+  /*padding-right: calc(13vmin);*/
   width: 30%;
   background: rgba(4, 58, 104, 0.9); /* Black see-through */
 }

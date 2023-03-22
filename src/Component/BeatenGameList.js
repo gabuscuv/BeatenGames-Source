@@ -1,6 +1,6 @@
 import '../App.css';
 import '../index.css';
-import React, { createElement, useState } from 'react';
+import React, { createElement } from 'react';
 
 
 class BeatenGameList extends React.Component {
@@ -15,7 +15,7 @@ class BeatenGameList extends React.Component {
     }
   
     requestData = ()=> {
-      const xhr = new XMLHttpRequest(); 
+      const xhr = new XMLHttpRequest();
       xhr.open('GET', `${window.location.protocol}//${window.location.hostname}:${window.location.port}`+'/misc/gamelist.json', true)
       xhr.onload = () => {
         if(xhr.status===200) {
@@ -48,6 +48,7 @@ class BeatenGameList extends React.Component {
         case "PSV": return "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/PlayStation_Vita_logo.svg/320px-PlayStation_Vita_logo.svg.png";
         case "PSP": return "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/PSP_Logo.svg/320px-PSP_Logo.svg.png";
         case "PSX": return "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/PSone_logo.svg/320px-PSone_logo.svg.png";
+        case "Wii": return "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Wii.svg/320px-Wii.svg.png";
         case "Stadia": return "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Stadia_logo.svg/320px-Stadia_logo.svg.png";
         
         default: return "";
@@ -67,6 +68,7 @@ class BeatenGameList extends React.Component {
       switch(plataform)
       {
         case "PC": return "overlay-steam";
+        case "PC (EGS)": return "overlay-egs";
         case "PC (VR)": return "overlay-steamvr";
         case "PC (Oculus)": return "overlay-white";
         case "PC (XGP)": return "overlay-PCXGP";
@@ -77,6 +79,7 @@ class BeatenGameList extends React.Component {
         case "NSW": return "overlay-switch";
         case "PSV": return "overlay-white";
         case "PSP": return "overlay-white";
+        case "Wii": return "overlay-wii";
         case "PSX": return "overlay-white";
         case "3DS": return "overlay-white";
         case "NDS": return "overlay-white";
