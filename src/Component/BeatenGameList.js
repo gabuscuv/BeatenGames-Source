@@ -16,7 +16,7 @@ class BeatenGameList extends React.Component {
 
   requestData = () => {
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', `${window.location.protocol}//${window.location.hostname}:${window.location.port}` + '/misc/gamelist.json', true)
+    xhr.open('GET', `${window.location.protocol}//${window.location.hostname}:${window.location.port}/misc/gamelist.json`, true)
     xhr.onload = () => {
       if (xhr.status === 200) {
         const gameList = JSON.parse(xhr.response)
