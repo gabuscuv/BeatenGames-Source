@@ -6,6 +6,7 @@ import React, { createElement } from 'react';
 class BeatenGameList extends React.Component {
 
   state = {
+    allowNSFW: false,
     gameList: {},
     output: []
   }
@@ -89,11 +90,16 @@ class BeatenGameList extends React.Component {
     if (!currState.gameList[currProps.yearToList]) { return }
     currState.output = []
     let initialList = currState.gameList[currProps.yearToList].map((element) => {
-      return (<td className={'container ' + (BeatenGameList.getPlataformCSSClass(element["status"]))}>
+      if ( ! (currState.allowNSFW) && element["nsfw"] === 1 ){
+        return 
+      }
+      return ( 
+        <td className={'container ' + (BeatenGameList.getPlataformCSSClass(element["status"]))}>
         <img className={"overlay " + BeatenGameList.getPlataformCSSClass(element["plataform"])} src={BeatenGameList.getPlataformLogo(element["plataform"])} alt={element["plataform"] + " logo"} />
         <img className="Image" alt="" src={element["img"]} />
         <p>{element["name"]}</p>
-      </td>)
+      </td>
+    )
     }
     );
 
@@ -111,6 +117,7 @@ class BeatenGameList extends React.Component {
         f = 0
         woktmp = [];
       }
+      if(! initialList[i]){continue;}
       woktmp.push(initialList[i])
       f++
     }
