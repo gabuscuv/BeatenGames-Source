@@ -91,7 +91,7 @@ class BeatenGameList extends React.Component {
     currState.output = []
     let initialList = currState.gameList[currProps.yearToList].map((element) => {
       if ( ! (currState.allowNSFW) && element["nsfw"] === 1 ){
-        return 
+        return null;
       }
       return ( 
         <td className={'container ' + (BeatenGameList.getPlataformCSSClass(element["status"]))}>
