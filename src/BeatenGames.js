@@ -3,14 +3,17 @@ import './App.css';
 import "react-widgets/styles.css";
 import { Combobox } from 'react-widgets';
 import React, { useState } from 'react';
+import { useSearchParams } from 'react-router-dom'
 import BeatenGameList from './Component/BeatenGameList';
 
 // workaround meanwhile is fetching data
 let keys = ["2023", "2022", "2021", "2020"]
 
-function App() {
+const BeatenGames = () => {
   const [year, setYear] = useState(2023);
   const [rows, setRows] = useState(4);
+  const [searchParams] = useSearchParams();
+
   var timer;
   function updateRows() {
     if (rows !== 1 && visualViewport.width <= 500) { setRows(1); return } // Mobile
@@ -38,10 +41,10 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Combobox className='Combobox' name="fieldyear" defaultValue="2023" data={keys} onChange={(year) => (setYear(year))}></Combobox>
-        <BeatenGameList yearToList={year} rows={rows} callback={initComboBox} />
+        <BeatenGameList yearToList={year} rows={rows} allowNSFW={searchParams.get("nsfw") === '1'} callback={initComboBox} />
       </header>
     </div>
   );
 }
 
-export default App;
+export default BeatenGames;

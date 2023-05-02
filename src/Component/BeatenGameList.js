@@ -90,7 +90,7 @@ class BeatenGameList extends React.Component {
     if (!currState.gameList[currProps.yearToList]) { return }
     currState.output = []
     let initialList = currState.gameList[currProps.yearToList].map((element) => {
-      if ( ! (currState.allowNSFW) && element["nsfw"] === 1 ){
+      if ( ! (currProps.allowNSFW) && element["nsfw"] === 1 ){
         return null;
       }
       return ( 
