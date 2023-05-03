@@ -40,6 +40,7 @@ class BeatenGameList extends React.Component {
       case "PC (itch.io)": return "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Itch.io_logo.svg/320px-Itch.io_logo.svg.png";
       case "PC (Origin)": return "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Origin.svg/320px-Origin.svg.png";
       case "PC (EGS)": return "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Epic_games_store_logo.svg/157px-Epic_games_store_logo.svg.png";
+      case "AArcade": return "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Apple-arcade-logo.svg/320px-Apple-arcade-logo.svg.png";
       case "NSW": return "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Nintendo_switch_logo.png/240px-Nintendo_switch_logo.png";
       case "3DS": return "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Nintendo_3ds_logo.svg/320px-Nintendo_3ds_logo.svg.png";
       case "NDS": return "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Nintendo_DS_Logo.svg/320px-Nintendo_DS_Logo.svg.png"
@@ -57,6 +58,7 @@ class BeatenGameList extends React.Component {
 
   static getStatusCSSClass = (plataform) => {
     switch (plataform) {
+      case "Completed": return "gold-text"; // ?
       case "Dropped": return "overlay-red";
       default: return "";
     }
@@ -72,6 +74,7 @@ class BeatenGameList extends React.Component {
       case "PC (XGP)": return "overlay-PCXGP";
       case "PC (itch.io)": return "overlay-white";
       case "Stadia": return "overlay-stadia";
+      case "AArcade": return "overlay-white";
       case "PS4": return "overlay-ps4";
       case "PS3": return "overlay-ps3";
       case "NSW": return "overlay-switch";

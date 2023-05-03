@@ -115,9 +115,8 @@
   width: 20%;
 }
 .Image {
-  
-  max-width: calc(10px + 50vmin);
-  height: auto;
+  max-width: calc(40vmin);
+  max-height: calc(40vmin);
 }
 
 .container {
