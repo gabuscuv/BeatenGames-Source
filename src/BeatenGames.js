@@ -6,13 +6,13 @@ import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom'
 import BeatenGameList from './Component/BeatenGameList';
 
-// workaround meanwhile is fetching data
-let keys = ["2023", "2022", "2021", "2020"]
 
 const BeatenGames = () => {
-  const [year, setYear] = useState(2023);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [year, setYear] = useState(initYear());
   const [rows, setRows] = useState(4);
-  const [searchParams] = useSearchParams();
+  const [keys, setKeys] = useState(["2023"]);
+
 
   var timer;
   function updateRows() {
@@ -29,10 +29,23 @@ const BeatenGames = () => {
 
   function initComboBox(keyslist) {
 
-    keys = (keyslist).reverse()
+    setKeys((keyslist).reverse())
     updateRows()
-
   }
+
+  function ChangedYear(year) {
+    searchParams.set("year", year);
+    setYear(year);
+    setSearchParams(searchParams);
+  }
+
+  function initYear() {
+    if (searchParams.get("year")) {
+      return searchParams.get("year");
+    }
+    return new Date().getFullYear();
+  }
+
 
   updateRows()
 
@@ -40,7 +53,7 @@ const BeatenGames = () => {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <Combobox className='Combobox' name="fieldyear" defaultValue="2023" data={keys} onChange={(year) => (setYear(year))}></Combobox>
+        <Combobox className='Combobox' name="fieldyear" defaultValue={initYear} data={keys} onChange={ChangedYear}></Combobox>
         <BeatenGameList yearToList={year} rows={rows} allowNSFW={searchParams.get("nsfw") === '1'} callback={initComboBox} />
       </header>
     </div>
