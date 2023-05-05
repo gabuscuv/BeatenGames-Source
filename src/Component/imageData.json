@@ -1,0 +1,43 @@
+{
+    "logos":
+    {
+         "PC":  "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Steam_logo.svg/320px-Steam_logo.svg.png",
+         "PC (VR)":  "https://cdn.cloudflare.steamstatic.com/steam/apps/250820/header.jpg?t=1574723957",
+         "PC (Oculus)":  "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Logo_Oculus_horizontal.svg/320px-Logo_Oculus_horizontal.svg.png",
+         "PC (XGP)":  "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/PC_Game_Pass_logo.svg/320px-PC_Game_Pass_logo.svg.png",
+         "PC (itch.io)":  "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Itch.io_logo.svg/320px-Itch.io_logo.svg.png",
+         "PC (Origin)":  "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Origin.svg/320px-Origin.svg.png",
+         "PC (EGS)":  "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Epic_games_store_logo.svg/157px-Epic_games_store_logo.svg.png",
+         "AArcade":  "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Apple-arcade-logo.svg/320px-Apple-arcade-logo.svg.png",
+         "NSW":  "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Nintendo_switch_logo.png/240px-Nintendo_switch_logo.png",
+         "3DS":  "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Nintendo_3ds_logo.svg/320px-Nintendo_3ds_logo.svg.png",
+         "NDS":  "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Nintendo_DS_Logo.svg/320px-Nintendo_DS_Logo.svg.png",
+         "PS4":  "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PlayStation_4_logo_and_wordmark.svg/320px-PlayStation_4_logo_and_wordmark.svg.png",
+         "PS3":  "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/PlayStation_3_logo_%282009%29.svg/320px-PlayStation_3_logo_%282009%29.svg.png",
+         "PSV":  "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/PlayStation_Vita_logo.svg/320px-PlayStation_Vita_logo.svg.png",
+         "PSP":  "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/PSP_Logo.svg/320px-PSP_Logo.svg.png",
+         "PSX":  "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/PSone_logo.svg/320px-PSone_logo.svg.png",
+         "Wii":  "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Wii.svg/320px-Wii.svg.png",
+         "Stadia":  "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Stadia_logo.svg/320px-Stadia_logo.svg.png"
+      },
+    "classes":
+    {
+         "PC":  "overlay-steam",
+         "PC (EGS)":  "overlay-egs",
+         "PC (VR)":  "overlay-steamvr",
+         "PC (Oculus)":  "overlay-white",
+         "PC (XGP)":  "overlay-PCXGP",
+         "PC (itch.io)":  "overlay-white",
+         "Stadia":  "overlay-stadia",
+         "AArcade":  "overlay-white",
+         "PS4":  "overlay-ps4",
+         "PS3":  "overlay-ps3",
+         "NSW":  "overlay-switch",
+         "PSV":  "overlay-white",
+         "PSP":  "overlay-white",
+         "Wii":  "overlay-wii",
+         "PSX":  "overlay-white",
+         "3DS":  "overlay-white",
+         "NDS":  "overlay-white"
+    }
+}
