@@ -3,6 +3,11 @@ import '../index.css';
 import React, { createElement } from 'react';
 import imageData from './imageData.json';
 
+interface imageData
+{
+  logos: { [id: string]: { type: string } }
+}
+
 class BeatenGameList extends React.Component {
 
   state = {
@@ -19,7 +24,7 @@ class BeatenGameList extends React.Component {
     xhr.open('GET', `${window.location.protocol}//${window.location.hostname}:${window.location.port}/misc/gamelist.json`, true)
     xhr.onload = () => {
       if (xhr.status === 200) {
-        const gameList = JSON.parse(xhr.response)
+        const gameList : imageData = JSON.parse(xhr.response)
         this.props.callback(Object.keys(gameList))
 
         this.setState({
@@ -30,11 +35,11 @@ class BeatenGameList extends React.Component {
     xhr.send(null)
   }
 
-  static getPlataformLogo = (plataform) => {
+  static getPlataformLogo = (plataform: string) : string => {
     return imageData.logos[plataform];
   }
 
-  static getStatusCSSClass = (plataform) => {
+  static getStatusCSSClass = (plataform: string) => {
     switch (plataform) {
       case "Completed": return "gold-text"; // ?
       case "Dropped": return "overlay-red";
@@ -43,7 +48,7 @@ class BeatenGameList extends React.Component {
 
   }
 
-  static getPlataformCSSClass = (plataform) => {
+  static getPlataformCSSClass = (plataform: string) : string => {
 
     if(imageData.classes[plataform])
     {

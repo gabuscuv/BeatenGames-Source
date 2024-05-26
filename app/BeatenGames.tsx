@@ -7,14 +7,14 @@ import { useSearchParams } from 'react-router-dom'
 import BeatenGameList from './Component/BeatenGameList';
 
 
-const BeatenGames = () => {
+export default function BeatenGames(){
   const [searchParams, setSearchParams] = useSearchParams();
   const [year, setYear] = useState(initYear());
   const [rows, setRows] = useState(4);
   const [keys, setKeys] = useState(["2023"]);
 
 
-  var timer;
+  let timer : NodeJS.Timeout;
   function updateRows() {
     if (rows !== 1 && visualViewport.width <= 500) { setRows(1); return } // Mobile
     if (rows !== 2 && visualViewport.width > 500 && visualViewport.width <= 810) { setRows(2); return } // Tablet-like
@@ -27,13 +27,13 @@ const BeatenGames = () => {
     timer = setTimeout(updateRows, 500)
   })
 
-  function initComboBox(keyslist) {
+  function initComboBox(keyslist : string[]) {
 
     setKeys((keyslist).reverse())
     updateRows()
   }
 
-  function ChangedYear(year) {
+  function ChangedYear(year: string) {
     searchParams.set("year", year);
     setYear(year);
     setSearchParams(searchParams);
@@ -53,11 +53,11 @@ const BeatenGames = () => {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <Combobox className='Combobox' name="fieldyear" defaultValue={initYear} data={keys} onChange={ChangedYear}></Combobox>
+        <Combobox className='Combobox' name="fieldyear" defaultValue={year?.toString()} data={keys} onChange={ChangedYear}></Combobox>
         <BeatenGameList yearToList={year} rows={rows} allowNSFW={searchParams.get("nsfw") === '1'} callback={initComboBox} />
       </header>
     </div>
   );
 }
 
-export default BeatenGames;
+;
