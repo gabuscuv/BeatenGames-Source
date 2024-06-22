@@ -29,12 +29,12 @@ export default function BeatenGames() {
       if (xhr.status === 200) {
         xhr.json().then((e) => {
           const gameList: jsonsS = e;
-          setKeys(Object.keys(gameList.GamesYearly));
+          setKeys(Object.keys(gameList.GamesYearly).reverse());
           setGames(gameList);
         });
       }
     });
-  }, [games]);
+  }, []);
 
   function ChangedYear(year: string) {
     //searchParams.set("year", year);
@@ -52,7 +52,6 @@ export default function BeatenGames() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <Combobox
           className="Combobox"
           name="fieldyear"
