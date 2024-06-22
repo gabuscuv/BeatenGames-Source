@@ -1,109 +1,76 @@
-import '../App.css';
-import '../index.css';
-import React, { createElement } from 'react';
-import imageData from './imageData.json';
+import "../App.css";
+import imageData from "./imageData.json";
+import { game } from "../game";
+import Image from "next/image";
 
-interface imageData
-{
-  logos: { [id: string]: { type: string } }
+interface ImageData {
+  logos: { [id: string]: string };
+  classes: { [id: string]: string };
 }
 
-class BeatenGameList extends React.Component {
+const _ImageData: ImageData = imageData;
 
-  state = {
-    gameList: {},
-    output: []
+function getStatusCSSClass(plataform: string): string {
+  switch (plataform) {
+    case "Completed":
+      return "gold-text"; // ?
+    case "Dropped":
+      return "overlay-red";
+    default:
+      return "";
   }
+}
 
-  componentDidMount() {
-    this.requestData()
+function getPlataformLogo(plataform: string): string {
+  return _ImageData.logos[plataform];
+}
+
+function getPlataformCSSClass(plataform: string): string {
+  if (_ImageData.classes[plataform]) {
+    return _ImageData.classes[plataform];
   }
+  return "overlay-notdefined";
+}
 
-  requestData = () => {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', `${window.location.protocol}//${window.location.hostname}:${window.location.port}/misc/gamelist.json`, true)
-    xhr.onload = () => {
-      if (xhr.status === 200) {
-        const gameList : imageData = JSON.parse(xhr.response)
-        this.props.callback(Object.keys(gameList))
-
-        this.setState({
-          gameList
-        })
-      }
-    }
-    xhr.send(null)
+export function BeatenGameList(props: {
+  gameList: Array<game>;
+  allowNSFW: boolean;
+}) {
+  if (!props.gameList === undefined || props.gameList.length === 0) {
+    return;
   }
-
-  static getPlataformLogo = (plataform: string) : string => {
-    return imageData.logos[plataform];
-  }
-
-  static getStatusCSSClass = (plataform: string) => {
-    switch (plataform) {
-      case "Completed": return "gold-text"; // ?
-      case "Dropped": return "overlay-red";
-      default: return "";
-    }
-
-  }
-
-  static getPlataformCSSClass = (plataform: string) : string => {
-
-    if(imageData.classes[plataform])
-    {
-      return imageData.classes[plataform];
-    }
-    return "overlay-notdefined"
-  }
-
-  static getDerivedStateFromProps(currProps, currState) {
-    if (!currState.gameList[currProps.yearToList]) { return }
-    currState.output = []
-    let initialList = currState.gameList[currProps.yearToList].map((element) => {
-      if (!(currProps.allowNSFW) && element["nsfw"] === 1) {
-        return null;
-      }
-      return (
-        <td className={'container ' + (BeatenGameList.getPlataformCSSClass(element["status"]))}>
-          <img className={"overlay " + BeatenGameList.getPlataformCSSClass(element["plataform"])} src={BeatenGameList.getPlataformLogo(element["plataform"])} alt={element["plataform"] + " logo"} />
-          <img className="Image" alt="" src={element["img"]} />
-          <p>{element["name"]}</p>
-        </td>
-      )
-    }
-    );
-
-    //currState.output.push(createElement("tr", null, initialList))
-
-    //let f = (output.length / 3);
-    if (initialList.length === 0) { return (createElement("tr", null)); }
-
-    let woktmp = [];
-    let f = 0;
-
-    for (var i = 0; i < initialList.length; i++) {
-      if (f === currProps.rows) {
-        currState.output.push(createElement("tr", null, woktmp))
-        f = 0
-        woktmp = [];
-      }
-      if (!initialList[i]) { continue; }
-      woktmp.push(initialList[i])
-      f++
-    }
-
-    if (woktmp.length !== 0) {
-      currState.output.push(createElement("tr", null, woktmp))
-    }
-
-  }
-
-  render() {
-    if (!this.state.gameList) { return (createElement("div", null, "Loading...")); }
-
-    return (createElement("table", null, createElement("tbody", null, this.state.output)))
-  }
+  return (
+    <div className="m-10 justify-center grid grid-cols-1 lg:grid-cols-4">
+      {props.gameList
+        .filter((e) => e.nsfw == false || (e.nsfw && props.allowNSFW))
+        .map((element) => (
+          <div
+            key={element.name}
+            className={"container " + getPlataformCSSClass(element["status"])}
+          >
+            <div className="relative">
+              <Image
+                className={
+                  "overlay " + getPlataformCSSClass(element["plataform"])
+                }
+                height={400 * 2}
+                width={200 * 2}
+                src={getPlataformLogo(element["plataform"])}
+                alt={element["plataform"] + " logo"}
+              />
+              <Image
+                className="Image"
+                height={400}
+                width={200}
+                alt=""
+                src={element["img"]}
+              />
+            </div>
+            <p className="items-center text-center">{element["name"]}</p>
+          </div>
+        ))}
+    </div>
+  );
 }
 
 export default BeatenGameList;

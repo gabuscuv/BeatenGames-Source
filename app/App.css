@@ -73,9 +73,9 @@
 .overlay-ps4
 {
   padding-top: 1%;
+  padding-right: 50%;
   padding-bottom: 1%;
-  /*padding-right: calc(13vmin);*/
-  width: 30%;
+  width: 100%;
   background: rgba(4, 58, 104, 0.9); /* Black see-through */
 }
 

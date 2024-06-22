@@ -1,63 +1,74 @@
-import logo from './logo.svg';
-import './App.css';
+"use client";
+import logo from "./logo.svg";
+import "./App.css";
 import "react-widgets/styles.css";
-import { Combobox } from 'react-widgets';
-import React, { useState } from 'react';
-import { useSearchParams } from 'react-router-dom'
-import BeatenGameList from './Component/BeatenGameList';
+import {Combobox} from "react-widgets";
+import {useEffect, useState} from "react";
+import BeatenGameList from "./Component/BeatenGameList";
+import {game} from "./game";
+import {useSearchParams} from "next/navigation";
 
+interface jsonsS {
+  GaaS: Array<game>;
+  GamesYearly: { [id: string]: Array<game> };
+}
 
-export default function BeatenGames(){
-  const [searchParams, setSearchParams] = useSearchParams();
+export default function BeatenGames() {
+  const searchParams = useSearchParams();
   const [year, setYear] = useState(initYear());
-  const [rows, setRows] = useState(4);
-  const [keys, setKeys] = useState(["2023"]);
+  const [keys, setKeys] = useState([
+    new Date(Date.now()).getFullYear().toString(),
+  ]);
+  const [games, setGames] = useState<jsonsS>();
 
-
-  let timer : NodeJS.Timeout;
-  function updateRows() {
-    if (rows !== 1 && visualViewport.width <= 500) { setRows(1); return } // Mobile
-    if (rows !== 2 && visualViewport.width > 500 && visualViewport.width <= 810) { setRows(2); return } // Tablet-like
-    if (rows !== 3 && visualViewport.width > 810 && visualViewport.width <= 1000) { setRows(3); return } // Tablet-like
-    if (rows !== 4 && visualViewport.width > 1000) { setRows(4); return } // Tablet-like
-  }
-
-  window.addEventListener('resize', function (event) {
-    if (timer) { clearTimeout(timer) }
-    timer = setTimeout(updateRows, 500)
-  })
-
-  function initComboBox(keyslist : string[]) {
-
-    setKeys((keyslist).reverse())
-    updateRows()
-  }
+  useEffect(() => {
+    fetch(
+      `${window.location.protocol}//${window.location.hostname}:${window.location.port}/misc/gamelist.json`,
+      {method: "GET"}
+    ).then((xhr) => {
+      if (xhr.status === 200) {
+        xhr.json().then((e) => {
+          const gameList: jsonsS = e;
+          setKeys(Object.keys(gameList.GamesYearly));
+          setGames(gameList);
+        });
+      }
+    });
+  }, [games]);
 
   function ChangedYear(year: string) {
-    searchParams.set("year", year);
+    //searchParams.set("year", year);
     setYear(year);
-    setSearchParams(searchParams);
+  //  setSearchParams(searchParams);
   }
 
-  function initYear() {
-    if (searchParams.get("year")) {
-      return searchParams.get("year");
+  function initYear() : string {
+    if (searchParams.has("year")) {
+      return searchParams.get("year") || '';
     }
-    return new Date().getFullYear();
+    return new Date().getFullYear().toString();
   }
-
-
-  updateRows()
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <Combobox className='Combobox' name="fieldyear" defaultValue={year?.toString()} data={keys} onChange={ChangedYear}></Combobox>
-        <BeatenGameList yearToList={year} rows={rows} allowNSFW={searchParams.get("nsfw") === '1'} callback={initComboBox} />
+        <Combobox
+          className="Combobox"
+          name="fieldyear"
+          defaultValue={year?.toString()}
+          data={keys}
+          onChange={ChangedYear}
+        ></Combobox>
+        {games === undefined ? (
+          <div>Loading</div>
+        ) : (
+          <BeatenGameList
+            gameList={games.GamesYearly[year] || []}
+            allowNSFW={searchParams.get("nsfw") === "1"}
+          />
+        )}
       </header>
     </div>
   );
 }
-
-;
