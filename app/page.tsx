@@ -1,9 +1,12 @@
+import { Suspense } from "react";
 import BeatenGames from "./BeatenGames";
 
 export default function Home() {
   return (
     <main className="min-h-screen ">
-      <BeatenGames />
+      <Suspense>
+        <BeatenGames />
+      </Suspense>
     </main>
   );
 }
