@@ -1,9 +1,12 @@
+import { Suspense } from "react";
 import BeatenGames from "./BeatenGames";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <BeatenGames />
+    <main className="min-h-screen ">
+      <Suspense>
+        <BeatenGames />
+      </Suspense>
     </main>
   );
 }

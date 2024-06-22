@@ -40,26 +40,26 @@ export function BeatenGameList(props: {
     return;
   }
   return (
-    <div className="m-10 justify-center grid grid-cols-1 lg:grid-cols-4">
+    <div className="m-2 gap-4 grid grid-cols-1 lg:grid-cols-4">
       {props.gameList
         .filter((e) => e.nsfw == false || (e.nsfw && props.allowNSFW))
         .map((element) => (
           <div
             key={element.name}
-            className={"container " + getPlataformCSSClass(element["status"])}
+            className={"items-center flex flex-col  py-5" + getPlataformCSSClass(element["status"])}
           >
-            <div className="relative">
+            <div className=" flex flex-col relative">
               <Image
                 className={
-                  "overlay " + getPlataformCSSClass(element["plataform"])
+                  " overlay " + getPlataformCSSClass(element["plataform"])
                 }
-                height={400 * 2}
-                width={200 * 2}
+                height={200 }
+                width={200}
                 src={getPlataformLogo(element["plataform"])}
                 alt={element["plataform"] + " logo"}
               />
               <Image
-                className="Image"
+                className="Image object-scale-down"
                 height={400}
                 width={200}
                 alt=""

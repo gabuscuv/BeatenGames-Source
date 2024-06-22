@@ -28,29 +28,33 @@
 {
   margin-top: 2%;
   margin-left: 2%;
-  width: 10%;
+  min-width: 10%;
+  max-width: 15%;
   background: rgb(32, 101, 161, 0.9); /* Black see-through */
 
 }
 
 .overlay-steam
 {
-  width: 20%;
-  transform: scale(1);
+  min-width: 30%;
+  max-width: 40%;
+  /* transform: scale(1); */
   background: rgb(32, 101, 161, 0.9); /* Black see-through */
 
 }
 
 .overlay-steamvr
 {
-  width: 18%;
+  min-width: 20%;
+  max-width: 50%;
   background: rgb(32, 101, 161, 0.9); /* Black see-through */
 
 }
 
 .overlay-white
 {
-  width: 20%;
+  min-width: 10%;
+  max-width: 30%;
   padding: 4px;
   background: rgba(255, 255, 255, 0.9); /* Black see-through */
 
@@ -58,7 +62,8 @@
 
 .overlay-oculus
 {
-  width: 20%;
+  min-width: 10%;
+  max-width: 30%;
   background: rgb(32, 101, 161, 0.9); /* Black see-through */
 
 }
@@ -66,29 +71,37 @@
 .overlay-wii
 {
   padding: 1%;
-  width: 15%;
+  min-width: 10%;
+  max-width: 30%;
   background: rgba(255, 255, 255, 0.9); /* Black see-through */
 }
 
 .overlay-ps4
 {
   padding-top: 1%;
+  padding-left: 3%;
   padding-right: 50%;
+  overflow-x: hidden;
   padding-bottom: 1%;
-  width: 100%;
+  min-width: initial;
   background: rgba(4, 58, 104, 0.9); /* Black see-through */
 }
 
 .overlay-ps3
 {
-  width: 20%;
-  transform: scale(1);
+  padding-top: 1%;
+  padding-left: 3%;
+  padding-right: 50%;
+  overflow-x: hidden;
+  padding-bottom: 1%;
+  
   background: rgba(4, 58, 104, 0.9); /* Black see-through */
 }
 
 .overlay-switch
 {
-  width: 15%;
+  min-width: 20%;
+  max-width: 30%;
 }
 
 .overlay-PCXGP
@@ -112,7 +125,8 @@
 }
 
 .overlay-notdefined {
-  width: 20%;
+  min-width: 20%;
+  max-width: 30%;
 }
 .Image {
   max-width: calc(40vmin);
@@ -126,7 +140,7 @@
 .overlay {
   position: absolute;
   opacity:1;
-  max-width: 100%;
+  /* max-width: 100%; */
   color: white;
   font-size: 20px;
 /*  padding-left: 20px;
