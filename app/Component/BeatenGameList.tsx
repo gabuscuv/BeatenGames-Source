@@ -49,15 +49,20 @@ export function BeatenGameList(props: {
             className={"items-center flex flex-col  py-5" + getPlataformCSSClass(element["status"])}
           >
             <div className=" flex flex-col relative">
-              <Image
+              <div className="flex space-x-2 overlay">
+                {element["plataform"].split(',').map((e, index, array) =>
+                  <Image
+                    key={element.name+"plataform"+e+"icon"}
                 className={
-                  " overlay " + getPlataformCSSClass(element["plataform"])
+                  " " + getPlataformCSSClass(e)
                 }
-                height={200 }
-                width={200}
-                src={getPlataformLogo(element["plataform"])}
-                alt={element["plataform"] + " logo"}
-              />
+                height={200/array.length}
+                width={200/array.length}
+                src={getPlataformLogo(e)}
+                alt={e + " logo"}
+              />)}
+                </div>
+              
               <Image
                 className="Image object-scale-down"
                 height={400}

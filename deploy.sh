@@ -4,17 +4,21 @@
 #set -e
 
 # build
-npm run build
+yarn build
 
 # navigate into the build output directory
-cd build
+cd out
+
+touch ./.nojekyll
+
+#cp -r ../deploy/.* .
 
 # if you are deploying to a custom domain
 # echo 'www.example.com' > CNAME
 
 git init
-git config --local user.name "S. Otha Scarlet"
-git config --local user.email "sohtascarlet@gmail.com"
+git config --local user.name "dsa"
+git config --local user.email "dsa@gmail.com"
 git add -A
 git commit -m 'deploy'
 

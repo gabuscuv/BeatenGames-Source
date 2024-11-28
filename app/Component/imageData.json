@@ -8,9 +8,10 @@
          "PC (itch.io)":  "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Itch.io_logo.svg/320px-Itch.io_logo.svg.png",
          "PC (Origin)":  "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Origin.svg/320px-Origin.svg.png",
          "PC (EGS)":  "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Epic_games_store_logo.svg/157px-Epic_games_store_logo.svg.png",
+         "Android": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Android_2023_3D_logo_and_wordmark.svg/320px-Android_2023_3D_logo_and_wordmark.svg.png",
          "AArcade":  "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Apple-arcade-logo.svg/320px-Apple-arcade-logo.svg.png",
          "NSW":  "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Nintendo_switch_logo.png/240px-Nintendo_switch_logo.png",
-         "3DS":  "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Nintendo_3ds_logo.svg/320px-Nintendo_3ds_logo.svg.png",
+         "3DS":  "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Nintendo_3DS_logo.svg/320px-Nintendo_3DS_logo.svg.png",
          "NDS":  "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Nintendo_DS_Logo.svg/320px-Nintendo_DS_Logo.svg.png",
          "PS4":  "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PlayStation_4_logo_and_wordmark.svg/320px-PlayStation_4_logo_and_wordmark.svg.png",
          "PS3":  "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/PlayStation_3_logo_%282009%29.svg/320px-PlayStation_3_logo_%282009%29.svg.png",
@@ -18,7 +19,8 @@
          "PSP":  "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/PSP_Logo.svg/320px-PSP_Logo.svg.png",
          "PSX":  "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/PSone_logo.svg/320px-PSone_logo.svg.png",
          "Wii":  "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Wii.svg/320px-Wii.svg.png",
-         "Stadia":  "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Stadia_logo.svg/320px-Stadia_logo.svg.png"
+         "Stadia":  "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Stadia_logo.svg/320px-Stadia_logo.svg.png",
+         "iOS": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/IOS_wordmark_%282017%29.svg/320px-IOS_wordmark_%282017%29.svg.png"
       },
     "classes":
     {
@@ -28,6 +30,7 @@
          "PC (Oculus)":  "overlay-white",
          "PC (XGP)":  "overlay-PCXGP",
          "PC (itch.io)":  "overlay-white",
+         "iOS":  "overlay-white",
          "Stadia":  "overlay-stadia",
          "AArcade":  "overlay-white",
          "PS4":  " overlay-ps4",
