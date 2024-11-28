@@ -7,14 +7,24 @@ import {useEffect, useState} from "react";
 import BeatenGameList from "./Component/BeatenGameList";
 import {game} from "./game";
 import {useSearchParams} from "next/navigation";
+import {Dropdown} from "flowbite-react";
 
 interface jsonsS {
+  VNs: Array<game>;
   GaaS: Array<game>;
   GamesYearly: { [id: string]: Array<game> };
 }
 
+enum type {
+  Games,
+  GaaS,
+ // VNs,
+  
+ }
+
 export default function BeatenGames() {
   const searchParams = useSearchParams();
+  const [mode, setMode] = useState<type>(type.Games);
   const [year, setYear] = useState(initYear());
   const [keys, setKeys] = useState([
     new Date(Date.now()).getFullYear().toString(),
@@ -36,6 +46,19 @@ export default function BeatenGames() {
     });
   }, []);
 
+  function getGameList(stuff: type): Array<game>
+  {
+    if (!games) { return []; }
+    switch (stuff)
+    {
+      
+      case type.Games: return games.GamesYearly[year];
+      /// case type.VNs: return [];
+      case type.GaaS: return games.GaaS;
+      default: return [];
+    }
+  }
+
   function ChangedYear(year: string) {
     //searchParams.set("year", year);
     setYear(year);
@@ -50,24 +73,33 @@ export default function BeatenGames() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <Combobox
+    <div className="App App-header">
+      <header className="flex p-5 space-x-5 z-10">
+    <Dropdown label={type[mode]} >
+          {Object.keys(type).filter(e=> Number.isNaN(Number(e))).map((e, count) =>
+            <Dropdown.Item key={"DropdownItem"+e} onClick={()=>setMode(count)}>{e}</Dropdown.Item>)}
+        </Dropdown>
+        
+        {(type.Games === mode && <Combobox
           className="Combobox"
           name="fieldyear"
           defaultValue={year?.toString()}
           data={keys}
           onChange={ChangedYear}
-        ></Combobox>
-        {games === undefined ? (
+        ></Combobox>)}
+        
+
+      </header>
+      <main className="">
+      {games === undefined ? (
           <div>Loading</div>
         ) : (
           <BeatenGameList
-            gameList={games.GamesYearly[year] || []}
+            gameList={getGameList(mode)}
             allowNSFW={searchParams.get("nsfw") === "1"}
           />
         )}
-      </header>
+      </main>
     </div>
   );
 }
