@@ -52,7 +52,7 @@ export default function BeatenGames() {
     switch (stuff)
     {
       
-      case type.Games: return games.GamesYearly[year];
+      case type.Games: return games.GamesYearly[year] ? games.GamesYearly[year] : [] ;
       /// case type.VNs: return [];
       case type.GaaS: return games.GaaS;
       default: return [];
